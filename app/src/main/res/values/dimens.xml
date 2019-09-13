@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="underweight_text_size">10sp</dimen>
+    <dimen name="normal_text_size">12sp</dimen>
+    <dimen name="result_layout_width">325dp</dimen>
+    <dimen name="result_layout_height">325dp</dimen>
+    <dimen name="second_start_margin">70dp</dimen>
+    <dimen name="third_start_margin">80dp</dimen>
+    <dimen name="fourth_start_margin">280dp</dimen>
+    <dimen name="cross_padding_left">30sp</dimen>
+    <dimen name="underweight_left_padding">45dp</dimen>
+    <dimen name="normal_left_padding">45dp</dimen>
+</resources>
