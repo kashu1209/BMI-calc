@@ -21,13 +21,148 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:id="@+id/linebreak"
+        android:id="@+id/divider_1"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="0.1dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="8dp"
+        android:background="#999999"
+        android:contentDescription="@string/divider_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/MainHeading"
+        app:srcCompat="@drawable/shape_rectangle_stroke" />
+
+
+    <TextView
+        android:id="@+id/inputWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/input_weight"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/divider_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider_1"
+        app:layout_constraintVertical_bias="0.282" />
+
+    <TextView
+        android:id="@+id/sampleWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="12dp"
+        android:text="@string/sample_weight"
+        android:textColor="#ff9900"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@+id/divider_2"
+        app:layout_constraintTop_toBottomOf="@+id/divider_1" />
+
+    <View
+        android:id="@+id/divider_2"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginTop="136dp"
+        android:background="#d1d1d1"
+        android:contentDescription="@string/divider_bar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/shape_rectangle_stroke"
+        tools:layout_editor_absoluteX="-8dp" />
+
+    <TextView
+        android:id="@+id/input_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/input_height"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/divider_3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider_2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/sampleHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="12dp"
+        android:text="@string/sample_height"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider_2" />
+
+    <TextView
+        android:id="@+id/heightUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/height_unit"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/divider_3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider_2"
+        app:layout_constraintVertical_bias="0.687" />
+
+    <TextView
+        android:id="@+id/weightUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:background="#c0c0c0"
-        app:layout_constraintTop_toBottomOf="@+id/MainHeading"
-        tools:layout_editor_absoluteX="0dp" />
+        android:layout_marginEnd="8dp"
+        android:text="@string/weight_unit"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/divider_2"
+        app:layout_constraintEnd_toEndOf="@+id/divider_2"
+        app:layout_constraintTop_toBottomOf="@+id/divider_1"
+        app:layout_constraintVertical_bias="0.823" />
+
+    <View
+        android:id="@+id/divider_3"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginTop="228dp"
+        android:background="#d1d1d1"
+        android:contentDescription="@string/divider_bar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/shape_rectangle_stroke"
+        tools:layout_editor_absoluteX="-12dp" />
+
+    <View
+        android:id="@+id/divider_4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="248dp"
+        android:background="#d1d1d1"
+        android:contentDescription="@string/divider_bar"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/shape_rectangle_stroke"
+        tools:layout_editor_absoluteX="-12dp" />
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider_4"
+        >
+
+        <include
+            android:id="@+id/calculator_container"
+            layout="@layout/keypad" />
+        <include
+            android:id="@+id/result_container"
+            layout="@layout/result"
+            android:visibility="gone"/>
+
+    </FrameLayout>
 
 
 

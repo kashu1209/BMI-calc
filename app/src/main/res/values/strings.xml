@@ -1,18 +1,28 @@
 <resources>
     <string name="app_name">BMI calc</string>
 
-    <string name="zero">0</string>
+    <string name="input_weight">Weight</string>
+    <string name="input_height">Height</string>
+    <string name="sample_weight">60</string>
+    <string name="sample_height">170</string>
+    <string name="weight_unit">Kilogram</string>
+    <string name="height_unit">Centimeter</string>
+    <string name="divider_bar">divider</string>
+    <string name="seven">7</string>
     <string name="one">1</string>
     <string name="two">2</string>
     <string name="three">3</string>
     <string name="four">4</string>
     <string name="five">5</string>
     <string name="six">6</string>
-    <string name="seven">7</string>
     <string name="eight">8</string>
     <string name="nine">9</string>
-    <string name="result">GO</string>
-    <string name="reset">AC</string>
+    <string name="zero">0</string>
+    <string name="dot">.</string>
+    <string name="ac">AC</string>
+    <string name="cross">DEL</string>
+    <string name="go">GO</string>
+    <string name="result">output</string>
     <string name="decimal">.</string>
     <string name="bmi">BMI</string>
     <string name="over_weight">Overweight</string>

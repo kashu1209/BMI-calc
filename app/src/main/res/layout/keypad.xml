@@ -228,19 +228,19 @@
         android:background="@drawable/button"
         android:textSize="20dp"
         />
+
     <Button
         android:id="@+id/buttonAC"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="@string/reset"
-        android:textColor="#dc5c06"
-        app:layout_constraintTop_toTopOf="@id/horizontal1"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal2"
-        app:layout_constraintRight_toRightOf="@id/vertical5"
-        app:layout_constraintLeft_toLeftOf="@id/vertical4"
         android:background="@drawable/button"
+        android:text="@string/ac"
+        android:textColor="#dc5c06"
         android:textSize="20dp"
-        />
+        app:layout_constraintBottom_toBottomOf="@id/horizontal2"
+        app:layout_constraintLeft_toLeftOf="@id/vertical4"
+        app:layout_constraintRight_toRightOf="@id/vertical5"
+        app:layout_constraintTop_toTopOf="@id/horizontal1" />
 
     <Button
         android:id="@+id/buttonDEL"
@@ -259,18 +259,19 @@
 
         app:layout_constraintTop_toTopOf="@id/horizontal2"
         app:layout_constraintVertical_bias="1.0" />
+
     <Button
         android:id="@+id/buttonGO"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="@string/result"
-        app:layout_constraintTop_toTopOf="@id/horizontal3"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal5"
-        app:layout_constraintRight_toRightOf="@id/vertical5"
-        app:layout_constraintLeft_toLeftOf="@id/vertical4"
         android:background="#dc5c06"
+        android:text="@string/go"
         android:textColor="#ffffff"
         android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal5"
+        app:layout_constraintLeft_toLeftOf="@id/vertical4"
+        app:layout_constraintRight_toRightOf="@id/vertical5"
+        app:layout_constraintTop_toTopOf="@id/horizontal3"
 
         />
 
