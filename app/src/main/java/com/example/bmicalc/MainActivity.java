@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -26,10 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String WEIGHT_INPUT = "weight_input";
     private static final String FINAL_RESULT = "final_result";
     private static final String VISIBLITY_CALCULATOR = "visiblity_calculator";
-    private static final String HEIGHT_INPUT1 = "height_input";
-    private static final String WEIGHT_INPUT1 = "weight_input";
-    private static final String FINAL_RESULT1 = "final_result";
-    private static final String VISIBLITY_CALCULATOR1 = "visiblity_calculator";
+    private static final String CATEGORY_WEIGHT = "category_weight";
     String[] weightUnits = {KILOGRAM, POUND};
     String[] heightUnits = {CENTIMETER, METER, FEET, INCH};
     Spinner height_spinner;
@@ -86,10 +84,41 @@ public class MainActivity extends AppCompatActivity {
         result = findViewById(R.id.result_container);
         output = findViewById(R.id.output);
 
+        if (savedInstanceState != null) {
+            height_in = savedInstanceState.getString(HEIGHT_INPUT);
+            weight_in = savedInstanceState.getString(WEIGHT_INPUT);
+            sample_height.setText(height_in);
+            sample_weight.setText(weight_in);
+            category_weight.setText(savedInstanceState.getString(CATEGORY_WEIGHT));
+            if (category_weight.getText().toString().equals("Normal")) {
+                category_weight.setTextColor(getResources().getColor(R.color.green));
+            }
+            else if (category_weight.getText().toString().equals("Overweight")) {
+                category_weight.setTextColor(getResources().getColor(R.color.darker_orange));
+            }
+            else {
+                category_weight.setTextColor(getResources().getColor(R.color.Dark_orange));
+            }
+            int Visibility_calculator;
+            String result_bmi;
+            result_bmi = savedInstanceState.getString(FINAL_RESULT);
+            output.setText(result_bmi);
+
+
+            Visibility_calculator = savedInstanceState.getInt(VISIBLITY_CALCULATOR);
+            calculator.setVisibility(Visibility_calculator);
+            if (Visibility_calculator == View.VISIBLE) {
+                result.setVisibility(View.GONE);
+            } else {
+                result.setVisibility(View.VISIBLE);
+            }
+
+        }
+
         sample_height.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                height_in="";
+
                 calculator.setVisibility(View.VISIBLE);
                 result.setVisibility(View.GONE);
                 sample_height.setTextColor(Color.parseColor("#ff9900"));
@@ -99,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
         sample_weight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                weight_in="";
                 calculator.setVisibility(View.VISIBLE);
                 result.setVisibility(View.GONE);
                 sample_weight.setTextColor(Color.parseColor("#ff9900"));
@@ -192,12 +220,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 float a = Float.parseFloat(sample_height.getText().toString()) * (float) height_factor;
-                float b = Float.parseFloat(sample_weight.getText().toString()) * (float) weight_factor;
+                float b = Float.parseFloat(sample_weight.getText().toString()) / (float) weight_factor;
                 if (a == 0 || b == 0) {
                     Toast.makeText(getApplicationContext(), "Enter correct information",
                             Toast.LENGTH_LONG).show();
                 } else {
-                    out = b / (a * a/10000);
+                    out = b / (a * a);
                     output.setText(Float.toString(out));
                     if (Float.parseFloat(output.getText().toString()) <= 18.5) {
                         category_weight.setTextColor(getResources().getColor(R.color.Dark_orange));
@@ -213,10 +241,6 @@ public class MainActivity extends AppCompatActivity {
                         category_weight.setText("Overweight");
                         category_weight.setTextColor(getResources().getColor(R.color.darker_orange));
                     }
-
-
-
-                //output.setTextColor("#");
                 calculator.setVisibility(View.GONE);
                 result.setVisibility(View.VISIBLE);
                 }
@@ -256,7 +280,73 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        height_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i) {
+                    case 0:
+                        height_unit.setText("" + heightUnits[i]);
+                        height_factor = 0.01;
+                        break;
+
+                    case 1:
+                        height_unit.setText("" + heightUnits[i]);
+                        height_factor = 1;
+                        break;
+                    case 2:
+                        height_unit.setText("" + heightUnits[i]);
+                        height_factor = 0.3048;
+                        break;
+                    case 3:
+                        height_unit.setText("" + heightUnits[i]);
+                        height_factor = 0.0254;
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        weight_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i) {
+                    case 0:
+                        weight_unit.setText("" + weightUnits[i]);
+                        weight_factor = 1;
+                        break;
+
+                    case 1:
+                        weight_unit.setText("" + weightUnits[i]);
+                        weight_factor = 2.205;
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+
+        });
+
+
 
 
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(HEIGHT_INPUT, sample_height.getText().toString());
+        outState.putString(WEIGHT_INPUT, sample_weight.getText().toString());
+        outState.putString(FINAL_RESULT, output.getText().toString());
+        outState.putString(CATEGORY_WEIGHT,category_weight.getText().toString());
+
+        outState.putInt(VISIBLITY_CALCULATOR, (calculator.getVisibility()));
+    }
+
 }

@@ -25,6 +25,8 @@
             layout="@layout/keypad" />
         <include
             android:id="@+id/result_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             layout="@layout/result"
             android:visibility="gone"/>
 

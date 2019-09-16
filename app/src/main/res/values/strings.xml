@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BMI calc</string>
+    <string name="app_name">BMI</string>
 
     <string name="input_weight">Weight</string>
     <string name="input_height">Height</string>
