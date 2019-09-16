@@ -28,27 +28,27 @@ public class MainActivity extends AppCompatActivity {
     private static final String FINAL_RESULT = "final_result";
     private static final String VISIBLITY_CALCULATOR = "visiblity_calculator";
     private static final String CATEGORY_WEIGHT = "category_weight";
-    String[] weightUnits = {KILOGRAM, POUND};
-    String[] heightUnits = {CENTIMETER, METER, FEET, INCH};
-    Spinner height_spinner;
-    Spinner weight_spinner;
-    TextView weight_unit;
-    TextView height_unit;
-    TextView output;
-    ArrayAdapter<String> adapterWeight;
-    ArrayAdapter<String> adapterHeight;
-    TextView sample_height;
-    double height_factor=1;
-    double weight_factor=1;
-    TextView sample_weight;
-    String weight_in = "";
-    String height_in = "";
-    Button zero, one, two, three, four, five, six, seven, eight, nine, dot, go, ac;
-    ImageButton del;
-    View calculator;
-    View result;
-    TextView category_weight;
-    float out;
+    private final String[] weightUnits = {KILOGRAM, POUND};
+    private final String[] heightUnits = {CENTIMETER, METER, FEET, INCH};
+    private Spinner height_spinner;
+    private Spinner weight_spinner;
+    private TextView weight_unit;
+    private TextView height_unit;
+    private TextView output;
+    private ArrayAdapter<String> adapterWeight;
+    private ArrayAdapter<String> adapterHeight;
+    private TextView sample_height;
+    private double height_factor=1;
+    private double weight_factor=1;
+    private TextView sample_weight;
+    private String weight_in = "";
+    private String height_in = "";
+    private Button zero, one, two, three, four, five, six, seven, eight, nine, dot, go, ac;
+    private ImageButton del;
+    private View calculator;
+    private View result;
+    private TextView category_weight;
+    private float out;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

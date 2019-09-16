@@ -243,6 +243,7 @@
         app:layout_constraintTop_toTopOf="@id/horizontal1" />
 
     <ImageButton
+        android:contentDescription="BackSpace"
         android:id="@+id/buttonDEL"
         android:layout_width="0dp"
         android:layout_height="0dp"

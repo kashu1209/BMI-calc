@@ -160,7 +160,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="12dp"
-        android:paddingLeft="@dimen/cross_padding_left"
+        android:padding="50sp"
         android:spinnerMode="dialog"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="@+id/spinner_height"
