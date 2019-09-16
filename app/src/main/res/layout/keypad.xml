@@ -242,14 +242,16 @@
         app:layout_constraintRight_toRightOf="@id/vertical5"
         app:layout_constraintTop_toTopOf="@id/horizontal1" />
 
-    <Button
+    <ImageButton
         android:id="@+id/buttonDEL"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/button"
+        app:srcCompat="@drawable/delete"
         android:text=""
         android:textColor="#919191"
-        android:textSize="20dp"
+        android:textSize="28sp"
+        android:gravity="center"
 
         app:layout_constraintBottom_toBottomOf="@id/horizontal3"
         app:layout_constraintHorizontal_bias="0.0"

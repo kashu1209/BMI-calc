@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical2"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="2dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout3"
+        app:layout_constraintGuide_percent=".50"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/frameLayout3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            android:id="@+id/input_container"
+            layout="@layout/input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/frameLayout"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            android:id="@+id/calculator_container"
+            layout="@layout/keypad"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></include>
+
+        <include
+            android:id="@+id/result_container"
+            layout="@layout/result"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"></include>
+
+    </FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
