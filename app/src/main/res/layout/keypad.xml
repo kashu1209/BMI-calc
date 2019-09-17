@@ -1,77 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical1"
         android:layout_width="1dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:id="@+id/vertical1"
         app:layout_constraintGuide_percent=".00" />
+
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical22"
         android:layout_width="1dp"
         android:layout_height="match_parent"
-        android:id="@+id/vertical2"
         android:orientation="vertical"
         app:layout_constraintGuide_percent=".25" />
+
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical3"
         android:layout_width="1dp"
         android:layout_height="match_parent"
-        android:id="@+id/vertical3"
         android:orientation="vertical"
         app:layout_constraintGuide_percent=".50" />
+
     <androidx.constraintlayout.widget.Guideline
-        android:layout_width="1dp"
         android:id="@+id/vertical4"
+        android:layout_width="1dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintGuide_percent=".75" />
+
     <androidx.constraintlayout.widget.Guideline
-        android:layout_width="1dp"
         android:id="@+id/vertical5"
+        android:layout_width="1dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="1.00" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal2"
         android:layout_width="1dp"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:id="@+id/horizontal2"
         app:layout_constraintGuide_percent="0.25" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal1"
         android:layout_width="1dp"
         android:layout_height="match_parent"
-        android:id="@+id/horizontal1"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent=".00" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal3"
         android:layout_width="1dp"
         android:layout_height="match_parent"
-        android:id="@+id/horizontal3"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent=".50" />
+
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal4"
         android:layout_width="1dp"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:id="@+id/horizontal4"
         app:layout_constraintGuide_percent=".75" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal5"
         android:layout_width="1dp"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:id="@+id/horizontal5"
-        app:layout_constraintGuide_percent="1.00"
         android:textColor="#919191"
-        />
+        app:layout_constraintGuide_percent="1.00" />
 
 
     <Button
@@ -81,39 +85,40 @@
         android:background="@drawable/button"
         android:text="@string/seven"
         android:textColor="#919191"
-        android:textSize="20dp"
+        android:textSize="@dimen/normal_text_size"
         app:layout_constraintBottom_toBottomOf="@id/horizontal2"
         app:layout_constraintLeft_toLeftOf="@id/vertical1"
-        app:layout_constraintRight_toRightOf="@id/vertical2"
+        app:layout_constraintRight_toRightOf="@id/vertical22"
 
         app:layout_constraintTop_toTopOf="@id/horizontal1" />
+
     <Button
         android:id="@+id/button4"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="@string/four"
-        app:layout_constraintTop_toTopOf="@id/horizontal2"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal3"
-        app:layout_constraintRight_toRightOf="@id/vertical2"
-        app:layout_constraintLeft_toLeftOf="@id/vertical1"
         android:background="@drawable/button"
+        android:text="@string/four"
         android:textColor="#919191"
-        android:textSize="20dp"
+        android:textSize="@dimen/normal_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal3"
+        app:layout_constraintLeft_toLeftOf="@id/vertical1"
+        app:layout_constraintRight_toRightOf="@id/vertical22"
+        app:layout_constraintTop_toTopOf="@id/horizontal2"
 
         />
+
     <Button
         android:id="@+id/button1"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="@string/one"
-        app:layout_constraintTop_toTopOf="@id/horizontal3"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal4"
-        app:layout_constraintRight_toRightOf="@id/vertical2"
-        app:layout_constraintLeft_toLeftOf="@id/vertical1"
         android:background="@drawable/button"
+        android:text="@string/one"
         android:textColor="#919191"
-        android:textSize="20dp"
-        />
+        android:textSize="@dimen/normal_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal4"
+        app:layout_constraintLeft_toLeftOf="@id/vertical1"
+        app:layout_constraintRight_toRightOf="@id/vertical22"
+        app:layout_constraintTop_toTopOf="@id/horizontal3" />
 
     <Button
         android:id="@+id/button8"
@@ -122,38 +127,40 @@
         android:background="@drawable/button"
         android:text="@string/eight"
         android:textColor="#919191"
-        android:textSize="20dp"
+        android:textSize="@dimen/normal_text_size"
         app:layout_constraintBottom_toBottomOf="@id/horizontal2"
-        app:layout_constraintLeft_toLeftOf="@id/vertical2"
+        app:layout_constraintLeft_toLeftOf="@id/vertical22"
         app:layout_constraintRight_toRightOf="@id/vertical3"
 
         app:layout_constraintTop_toTopOf="@id/horizontal1" />
+
     <Button
         android:id="@+id/button5"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="@string/five"
-        app:layout_constraintTop_toTopOf="@id/horizontal2"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal3"
-        app:layout_constraintRight_toRightOf="@id/vertical3"
-        app:layout_constraintLeft_toLeftOf="@id/vertical2"
         android:background="@drawable/button"
+        android:text="@string/five"
         android:textColor="#919191"
-        android:textSize="20dp"
+        android:textSize="@dimen/normal_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal3"
+        app:layout_constraintLeft_toLeftOf="@id/vertical22"
+        app:layout_constraintRight_toRightOf="@id/vertical3"
+        app:layout_constraintTop_toTopOf="@id/horizontal2"
 
         />
+
     <Button
         android:id="@+id/button2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="@string/two"
-        app:layout_constraintTop_toTopOf="@id/horizontal3"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal4"
-        app:layout_constraintRight_toRightOf="@id/vertical3"
-        app:layout_constraintLeft_toLeftOf="@id/vertical2"
         android:background="@drawable/button"
+        android:text="@string/two"
         android:textColor="#919191"
-        android:textSize="20dp"
+        android:textSize="@dimen/normal_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal4"
+        app:layout_constraintLeft_toLeftOf="@id/vertical22"
+        app:layout_constraintRight_toRightOf="@id/vertical3"
+        app:layout_constraintTop_toTopOf="@id/horizontal3"
 
         />
 
@@ -164,70 +171,72 @@
         android:background="@drawable/button"
         android:text="@string/nine"
         android:textColor="#919191"
-        android:textSize="20dp"
+        android:textSize="@dimen/normal_text_size"
         app:layout_constraintBottom_toBottomOf="@id/horizontal2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@id/vertical3"
         app:layout_constraintRight_toRightOf="@id/vertical4"
         app:layout_constraintTop_toTopOf="@id/horizontal1"
         app:layout_constraintVertical_bias="0.0" />
+
     <Button
         android:id="@+id/button6"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="@string/six"
-        android:textSize="20dp"
-
-        app:layout_constraintTop_toTopOf="@id/horizontal2"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal3"
-        app:layout_constraintRight_toRightOf="@id/vertical4"
-        app:layout_constraintLeft_toLeftOf="@id/vertical3"
         android:background="@drawable/button"
+        android:text="@string/six"
+
         android:textColor="#919191"
-        />
+        android:textSize="@dimen/normal_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal3"
+        app:layout_constraintLeft_toLeftOf="@id/vertical3"
+        app:layout_constraintRight_toRightOf="@id/vertical4"
+        app:layout_constraintTop_toTopOf="@id/horizontal2" />
+
     <Button
         android:id="@+id/button3"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/button"
         android:text="@string/three"
-        app:layout_constraintTop_toTopOf="@id/horizontal3"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal4"
-        app:layout_constraintRight_toRightOf="@id/vertical4"
-        app:layout_constraintLeft_toLeftOf="@id/vertical3"
         android:textColor="#919191"
-        android:textSize="20dp"
+        android:textSize="@dimen/normal_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal4"
+        app:layout_constraintLeft_toLeftOf="@id/vertical3"
+        app:layout_constraintRight_toRightOf="@id/vertical4"
 
 
-        android:background="@drawable/button"/>
+        app:layout_constraintTop_toTopOf="@id/horizontal3" />
+
     <Button
         android:id="@+id/button0"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="@string/zero"
-        app:layout_constraintTop_toTopOf="@id/horizontal4"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal5"
-        app:layout_constraintRight_toRightOf="@id/vertical3"
-        app:layout_constraintLeft_toLeftOf="@id/vertical1"
         android:background="@drawable/button"
+        android:text="@string/zero"
         android:textColor="#919191"
-        android:textSize="20dp"
+        android:textSize="@dimen/normal_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal5"
+        app:layout_constraintLeft_toLeftOf="@id/vertical1"
+        app:layout_constraintRight_toRightOf="@id/vertical3"
+        app:layout_constraintTop_toTopOf="@id/horizontal4"
 
 
         />
+
     <Button
         android:id="@+id/buttondot"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="@string/decimal"
-        android:textColor="#919191"
-
-        app:layout_constraintTop_toTopOf="@id/horizontal4"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal5"
-        app:layout_constraintRight_toRightOf="@id/vertical4"
-        app:layout_constraintLeft_toLeftOf="@id/vertical3"
         android:background="@drawable/button"
-        android:textSize="20dp"
-        />
+        android:text="@string/decimal"
+
+        android:textColor="#919191"
+        android:textSize="@dimen/normal_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal5"
+        app:layout_constraintLeft_toLeftOf="@id/vertical3"
+        app:layout_constraintRight_toRightOf="@id/vertical4"
+        app:layout_constraintTop_toTopOf="@id/horizontal4" />
 
     <Button
         android:id="@+id/buttonAC"
@@ -236,32 +245,32 @@
         android:background="@drawable/button"
         android:text="@string/ac"
         android:textColor="#dc5c06"
-        android:textSize="20dp"
+        android:textSize="@dimen/normal_text_size"
         app:layout_constraintBottom_toBottomOf="@id/horizontal2"
         app:layout_constraintLeft_toLeftOf="@id/vertical4"
         app:layout_constraintRight_toRightOf="@id/vertical5"
         app:layout_constraintTop_toTopOf="@id/horizontal1" />
 
     <ImageButton
-        android:contentDescription="BackSpace"
         android:id="@+id/buttonDEL"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/button"
-        app:srcCompat="@drawable/delete"
+        android:contentDescription="@string/backspace"
+        android:gravity="center"
         android:text=""
         android:textColor="#919191"
         android:textSize="28sp"
-        android:gravity="center"
-
         app:layout_constraintBottom_toBottomOf="@id/horizontal3"
+
         app:layout_constraintHorizontal_bias="0.0"
-
         app:layout_constraintLeft_toLeftOf="@id/vertical4"
-        app:layout_constraintRight_toRightOf="@id/vertical5"
 
+        app:layout_constraintRight_toRightOf="@id/vertical5"
         app:layout_constraintTop_toTopOf="@id/horizontal2"
-        app:layout_constraintVertical_bias="1.0" />
+
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/delete" />
 
     <Button
         android:id="@+id/buttonGO"
@@ -270,7 +279,7 @@
         android:background="#dc5c06"
         android:text="@string/go"
         android:textColor="#ffffff"
-        android:textSize="20dp"
+        android:textSize="@dimen/normal_text_size"
         app:layout_constraintBottom_toBottomOf="@id/horizontal5"
         app:layout_constraintLeft_toLeftOf="@id/vertical4"
         app:layout_constraintRight_toRightOf="@id/vertical5"

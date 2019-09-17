@@ -74,7 +74,7 @@
                 android:text="@string/underweight"
                 android:textAlignment="center"
                 android:textColor="#dc5c06"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/output"

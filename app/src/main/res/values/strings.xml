@@ -18,11 +18,8 @@
     <string name="eight">8</string>
     <string name="nine">9</string>
     <string name="zero">0</string>
-    <string name="dot">.</string>
     <string name="ac">AC</string>
-    <string name="cross">DEL</string>
     <string name="go">GO</string>
-    <string name="result">output</string>
     <string name="decimal">.</string>
     <string name="bmi">BMI</string>
     <string name="over_weight">Overweight</string>
@@ -33,6 +30,7 @@
     <string name="_25_0">25.0</string>
     <string name="_18_5">18.5</string>
     <string name="_40_0">40.0</string>
+    <string name="backspace">BackSpace</string>
 
 
 </resources>
