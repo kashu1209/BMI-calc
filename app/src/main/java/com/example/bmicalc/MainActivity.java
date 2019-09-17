@@ -8,6 +8,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String HEIGHT_INPUT = "height_input";
     private static final String WEIGHT_INPUT = "weight_input";
     private static final String FINAL_RESULT = "final_result";
-    private static final String VISIBLITY_KEYPAD = "visiblity_keypad";
+    private static final String VISIBILITY_KEYPAD = "visibility_keypad";
     private static final String CATEGORY_WEIGHT = "categoryWeight";
 
     private static final Double CENTIMETER_CONVERSION_RATE = 0.01;
@@ -42,14 +43,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView heightUnit;
     private TextView output;
     private TextView valueHeight;
-    private double height_factor = CENTIMETER_CONVERSION_RATE;
-    private double weight_factor = 1;
     private TextView valueWeight;
-    private String weightInput = "";
-    private String heightInput = "";
+    private TextView categoryWeight;
+
     private View keypad;
     private View result;
-    private TextView categoryWeight;
+
+    private double heightFactor = CENTIMETER_CONVERSION_RATE;
+    private double weightFactor = 1;
+
+    private String weightInput = "";
+    private String heightInput = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,89 +92,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 categoryWeight.setTextColor(getResources().getColor(R.color.Dark_orange));
             }
 
-            String result_bmi;
-            result_bmi = savedInstanceState.getString(FINAL_RESULT);
-            output.setText(result_bmi);
-            keypad.setVisibility(savedInstanceState.getInt(VISIBLITY_KEYPAD));
-            if (savedInstanceState.getInt(VISIBLITY_KEYPAD) == View.VISIBLE) {
+            output.setText(savedInstanceState.getString(FINAL_RESULT));
+            keypad.setVisibility(savedInstanceState.getInt(VISIBILITY_KEYPAD));
+            if (savedInstanceState.getInt(VISIBILITY_KEYPAD) == View.VISIBLE) {
                 result.setVisibility(View.GONE);
             } else {
                 result.setVisibility(View.VISIBLE);
             }
         }
 
-        findViewById(R.id.input_weight).setOnClickListener(view -> {
-            AlertDialog dialog = new AlertDialog.Builder(MainActivity.this).setItems(weightUnits, (dialog1, i) -> {
-
-                switch (i) {
-                    case KILOGRAM_POSITION:
-                        weightUnit.setText(weightUnits[KILOGRAM_POSITION]);
-                        weight_factor = KILOGRAM_CONVERSION_RATE;
-                        break;
-
-                    case POUND_POSITION:
-                        weightUnit.setText(weightUnits[POUND_POSITION]);
-                        weight_factor = POUND_CONVERSION_RATE;
-                        break;
-                }
-                keypad.setVisibility(View.VISIBLE);
-                result.setVisibility(View.GONE);
-                valueWeight.setTextColor(Color.parseColor("#ff9900"));
-                valueHeight.setTextColor(Color.parseColor("#919191"));
-            }).create();
-            dialog.show();
-        });
-
-        findViewById(R.id.input_height).setOnClickListener(view -> {
-            AlertDialog dialog = new AlertDialog.Builder(MainActivity.this).setItems(heightUnits, (dialog1, i) -> {
-
-                switch (i) {
-                    case CENTIMETER_POSITION:
-                        heightUnit.setText(heightUnits[CENTIMETER_POSITION]);
-                        height_factor = CENTIMETER_CONVERSION_RATE;
-                        break;
-
-                    case METER_POSITION:
-                        heightUnit.setText(heightUnits[METER_POSITION]);
-                        height_factor = METER_CONVERSION_RATE;
-                        break;
-                    case FEET_POSITION:
-                        heightUnit.setText(heightUnits[FEET_POSITION]);
-                        height_factor = FEET_CONVERSION_RATE;
-                        break;
-                    case INCH_POSITION:
-                        heightUnit.setText(heightUnits[INCH_POSITION]);
-                        height_factor = INCH_CONVERSION_RATE;
-                        break;
-                }
-                keypad.setVisibility(View.VISIBLE);
-                result.setVisibility(View.GONE);
-                valueHeight.setTextColor(Color.parseColor("#ff9900"));
-                valueWeight.setTextColor(Color.parseColor("#919191"));
-            }).create();
-            dialog.show();
-        });
-
-        valueHeight.setOnClickListener(view -> {
-            heightInput = "";
-            keypad.setVisibility(View.VISIBLE);
-            result.setVisibility(View.GONE);
-            valueHeight.setTextColor(Color.parseColor("#ff9900"));
-            valueWeight.setTextColor(Color.parseColor("#919191"));
-        });
-        valueWeight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                weightInput = "";
-                keypad.setVisibility(View.VISIBLE);
-                result.setVisibility(View.GONE);
-                valueWeight.setTextColor(Color.parseColor("#ff9900"));
-                valueHeight.setTextColor(Color.parseColor("#919191"));
-            }
-        });
-
-
-
+        findViewById(R.id.input_weight).setOnClickListener(this);
         findViewById(R.id.button0).setOnClickListener(this);
         findViewById(R.id.button1).setOnClickListener(this);
         findViewById(R.id.button2).setOnClickListener(this);
@@ -183,27 +114,85 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.button9).setOnClickListener(this);
         findViewById(R.id.buttonAC).setOnClickListener(this);
         findViewById(R.id.buttonDEL).setOnClickListener(this);
-        findViewById(R.id.buttondot).setOnClickListener(this);
+        findViewById(R.id.button_dot).setOnClickListener(this);
         findViewById(R.id.buttonGO).setOnClickListener(this);
-
-
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString(HEIGHT_INPUT, valueHeight.getText().toString());
         outState.putString(WEIGHT_INPUT, valueWeight.getText().toString());
         outState.putString(FINAL_RESULT, output.getText().toString());
         outState.putString(CATEGORY_WEIGHT, categoryWeight.getText().toString());
 
-        outState.putInt(VISIBLITY_KEYPAD, (keypad.getVisibility()));
+        outState.putInt(VISIBILITY_KEYPAD, (keypad.getVisibility()));
     }
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.buttondot){
-            if (Color.parseColor("#ff9900") == valueHeight.getCurrentTextColor()) {
+        if (view.getId()==R.id.sampleWeight) {
+            weightInput = "";
+            keypad.setVisibility(View.VISIBLE);
+            result.setVisibility(View.GONE);
+            valueWeight.setTextColor(getResources().getColor(R.color.orange));
+            valueHeight.setTextColor(getResources().getColor(R.color.grey));
+        } else if (view.getId()==R.id.sampleHeight) {
+            heightInput = "";
+            keypad.setVisibility(View.VISIBLE);
+            result.setVisibility(View.GONE);
+            valueHeight.setTextColor(getResources().getColor(R.color.orange));
+            valueWeight.setTextColor(getResources().getColor(R.color.grey));
+        } else if (view.getId() == R.id.input_height) {
+            AlertDialog dialog = new AlertDialog.Builder(MainActivity.this).setItems(heightUnits, (dialog1, i) -> {
+
+                switch (i) {
+                    case CENTIMETER_POSITION:
+                        heightUnit.setText(heightUnits[CENTIMETER_POSITION]);
+                        heightFactor = CENTIMETER_CONVERSION_RATE;
+                        break;
+
+                    case METER_POSITION:
+                        heightUnit.setText(heightUnits[METER_POSITION]);
+                        heightFactor = METER_CONVERSION_RATE;
+                        break;
+                    case FEET_POSITION:
+                        heightUnit.setText(heightUnits[FEET_POSITION]);
+                        heightFactor = FEET_CONVERSION_RATE;
+                        break;
+                    case INCH_POSITION:
+                        heightUnit.setText(heightUnits[INCH_POSITION]);
+                        heightFactor = INCH_CONVERSION_RATE;
+                        break;
+                }
+                keypad.setVisibility(View.VISIBLE);
+                result.setVisibility(View.GONE);
+                valueHeight.setTextColor(getResources().getColor(R.color.orange));
+                valueWeight.setTextColor(getResources().getColor(R.color.grey));
+            }).create();
+            dialog.show();
+        } else if (view.getId() == R.id.input_weight) {
+            AlertDialog dialog = new AlertDialog.Builder(MainActivity.this).setItems(weightUnits, (dialog1, i) -> {
+
+                switch (i) {
+                    case KILOGRAM_POSITION:
+                        weightUnit.setText(weightUnits[KILOGRAM_POSITION]);
+                        weightFactor = KILOGRAM_CONVERSION_RATE;
+                        break;
+
+                    case POUND_POSITION:
+                        weightUnit.setText(weightUnits[POUND_POSITION]);
+                        weightFactor = POUND_CONVERSION_RATE;
+                        break;
+                }
+                keypad.setVisibility(View.VISIBLE);
+                result.setVisibility(View.GONE);
+                valueWeight.setTextColor(getResources().getColor(R.color.orange));
+                valueHeight.setTextColor(getResources().getColor(R.color.green));
+            }).create();
+            dialog.show();
+        } else if (view.getId() == R.id.button_dot) {
+            if (getResources().getColor(R.color.orange) == valueHeight.getCurrentTextColor()) {
                 if (!heightInput.contains(".")) {
                     heightInput = valueHeight.getText().toString();
                     heightInput += ".";
@@ -216,41 +205,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     valueWeight.setText(weightInput);
                 }
             }
-        } else if(view.getId()==R.id.buttonAC){
-            if (Color.parseColor("#ff9900") == valueHeight.getCurrentTextColor()) {
+        } else if (view.getId()==R.id.buttonAC) {
+            if (getResources().getColor(R.color.orange) == valueHeight.getCurrentTextColor()) {
                 heightInput = "0";
                 valueHeight.setText(heightInput);
             } else if (Color.parseColor("#ff9900") == valueWeight.getCurrentTextColor()) {
                 weightInput = "0";
                 valueWeight.setText(weightInput);
             }
-        } else if(view.getId()==R.id.buttonGO){
-            float a = Float.parseFloat(valueHeight.getText().toString()) * (float) height_factor;
-            float b = Float.parseFloat(valueWeight.getText().toString()) / (float) weight_factor;
-            if (a == 0 || b == 0) {
-                Toast.makeText(getApplicationContext(), "Enter correct information",
+        } else if (view.getId()==R.id.buttonGO) {
+            float height = Float.parseFloat(valueHeight.getText().toString()) * (float) heightFactor;
+            float weight = Float.parseFloat(valueWeight.getText().toString()) / (float) weightFactor;
+            if (height == 0 || weight == 0) {
+                Toast.makeText(getApplicationContext(),getResources().getString(R.string.invalid_input),
                         Toast.LENGTH_LONG).show();
             } else {
-                float out = b / (a * a);
-                output.setText(Float.toString(out));
+                float out = weight / (height * height);
+                output.setText(String.valueOf(out));
                 if (Float.parseFloat(output.getText().toString()) <= 18.5) {
                     categoryWeight.setTextColor(getResources().getColor(R.color.Dark_orange));
-                    categoryWeight.setText("Underweight");
+                    categoryWeight.setText(getResources().getString(R.string.underweight));
                 } else if (Float.parseFloat(output.getText().toString()) <= 25.0) {
-                    categoryWeight.setText("Normal");
+                    categoryWeight.setText(getResources().getString(R.string.normal));
                     categoryWeight.setTextColor(getResources().getColor(R.color.green));
                 } else if (Float.parseFloat(output.getText().toString()) > 50) {
-                    Toast.makeText(getApplicationContext(), "Invalid BMI! Please check your input",
+                    Toast.makeText(getApplicationContext(),getResources().getString(R.string.invalid_input),
                             Toast.LENGTH_LONG).show();
                     return;
                 } else {
-                    categoryWeight.setText("Overweight");
+                    categoryWeight.setText(getResources().getString(R.string.over_weight));
                     categoryWeight.setTextColor(getResources().getColor(R.color.darker_orange));
                 }
                 keypad.setVisibility(View.GONE);
                 result.setVisibility(View.VISIBLE);
             }
-        } else if(view.getId()==R.id.buttonDEL){
+        } else if (view.getId()==R.id.buttonDEL) {
             if (getResources().getColor(R.color.orange) == valueHeight.getCurrentTextColor()) {
                 heightInput = valueHeight.getText().toString();
                 if (heightInput.length() == 1) {
