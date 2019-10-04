@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private View result;
 
     private double heightFactor = CENTIMETER_CONVERSION_RATE;
-    private double weightFactor = 1;
+    private double weightFactor = KILOGRAM_CONVERSION_RATE;
 
     private String weightInput = "";
     private String heightInput = "";
